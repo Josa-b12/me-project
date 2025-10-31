@@ -33,7 +33,7 @@ yesBtn.addEventListener("click", () => {
 
   // Message de remerciement
   setTimeout(() => {
-    alert("Merci ! Je suis l'homme le plus heureux du monde🤧❤️");
+    alert("Merci ! Je serais l'homme le plus heureux du monde🤧❤️");
     confettiContainer.remove(); // Nettoie les confettis
   }, 3000);
 });
