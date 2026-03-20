@@ -33,7 +33,7 @@ yesBtn.addEventListener("click", () => {
 
   // Message de remerciement
   setTimeout(() => {
-    alert("Merci ! Je serais l'homme le plus heureux🤧❤️");
+    alert("Merci ! C'est ca l'informatique😂🙂‍↕️");
     confettiContainer.remove(); // Nettoie les confettis
   }, 3000);
 });
