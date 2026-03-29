@@ -37,7 +37,7 @@ yesBtn.addEventListener("click", () => {
 
   // Message personnalisé à la place de l'alert
   const msg = document.createElement("p");
-  msg.textContent = "Merci énormément mon amour, je savais que tu as un bon coeur ❤️";
+  msg.textContent = "Merci énormément mon amour, je savais que tu as un bon coeur ❤️😻😻";
   msg.style.cssText = "text-align:center; font-size:1.4rem; margin-top:1.5rem; color:#e63946;";
   document.querySelector(".container").appendChild(msg);
 
