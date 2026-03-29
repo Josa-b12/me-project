@@ -1,39 +1,45 @@
-// script.js
 const noBtn = document.getElementById("no-btn");
 const yesBtn = document.getElementById("yes-btn");
 
-// Effet pour le bouton "Non" qui fuit
-noBtn.addEventListener("mouseover", () => {
-  const container = noBtn.parentElement.getBoundingClientRect();
-  const btnRect = noBtn.getBoundingClientRect();
-  
-  const offsetX = Math.random() * (container.width - btnRect.width);
-  const offsetY = Math.random() * (container.height - btnRect.height);
-  
-  noBtn.style.position = "absolute";
-  noBtn.style.left = `${offsetX}px`;
-  noBtn.style.top = `${offsetY}px`;
-});
+function fuir(e) {
+  const zone = noBtn.parentElement.getBoundingClientRect();
+  const bw = noBtn.offsetWidth;
+  const bh = noBtn.offsetHeight;
 
-// Effet quand on clique sur "Oui"
+  noBtn.style.position = "absolute";
+  noBtn.style.left = (Math.random() * (zone.width - bw)) + "px";
+  noBtn.style.top = (Math.random() * (zone.height - bh)) + "px";
+}
+
+// Fuit à la souris ET au toucher (mobile)
+noBtn.addEventListener("mouseover", fuir);
+noBtn.addEventListener("touchstart", (e) => {
+  e.preventDefault(); // empêche le clic sur mobile
+  fuir(e);
+}, { passive: false });
+
+// Sécurité supplémentaire : bloque tout clic
+noBtn.addEventListener("click", (e) => e.preventDefault());
+
 yesBtn.addEventListener("click", () => {
   const confettiContainer = document.createElement("div");
   confettiContainer.className = "confetti-container";
   document.body.appendChild(confettiContainer);
 
-  // Créer des confettis
   for (let i = 0; i < 100; i++) {
     const confetti = document.createElement("div");
     confetti.className = "confetti";
     confetti.style.left = `${Math.random() * 100}vw`;
     confetti.style.animationDuration = `${Math.random() * 2 + 3}s`;
-    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`; // Couleur aléatoire
+    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
     confettiContainer.appendChild(confetti);
   }
 
-  // Message de remerciement
-  setTimeout(() => {
-    alert("Merci ! C'est ca l'informatique😂🙂‍↕️");
-    confettiContainer.remove(); // Nettoie les confettis
-  }, 3000);
+  // Message personnalisé à la place de l'alert
+  const msg = document.createElement("p");
+  msg.textContent = "Merci énormément mon amour, je savais que tu as un bon coeur ❤️";
+  msg.style.cssText = "text-align:center; font-size:1.4rem; margin-top:1.5rem; color:#e63946;";
+  document.querySelector(".container").appendChild(msg);
+
+  setTimeout(() => confettiContainer.remove(), 5000);
 });
